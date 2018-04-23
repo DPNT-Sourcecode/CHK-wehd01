@@ -12,6 +12,13 @@ def checkout(skus):
         else:
             return -1
 
+    # Compute cost
+    cost = 0
     for sku in counts:
-        
+        while counts[sku] > 0:
+            if sku == 'A':
+                if counts[sku] / 3 > 0:
+                counts[sku] -= 3
+                cost + =
+
 
