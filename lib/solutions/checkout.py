@@ -47,9 +47,12 @@ def checkout(skus):
     }
 
     offers_bogof = {
-        
+        'E': (2, 1, 'B'),
+        'F': (2, 1, 'F'),
+        'N': (3, 1, 'M'),
+        'R': (3, 1, 'Q'),
+        'U': (3, 1, 'U'),
     }
-
 
     counts = {}
     for sku in recognised_skus:
