@@ -104,9 +104,9 @@ def checkout(skus):
                         break
 
             elif sku in GROUP_DISCOUNT[0]:
-                selection = [sku]
+                selection = [sku * counts[sku]][0]
                 for offer_sku in GROUP_DISCOUNT[0]:
-                    if offer_sku != sku and counts[offer_sku] > 0:
+                    while offer_sku != sku and counts[offer_sku] > 0:
                         selection.append(offer_sku)
 
                 if len(selection) >= GROUP_DISCOUNT[1]:
