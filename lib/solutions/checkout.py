@@ -100,7 +100,15 @@ def checkout(skus):
                         offer_applied = True
                         break
             elif sku in GROUP_DISCOUNT[0]:
-                
+                selection = [sku]
+                for offer_sku in GROUP_DISCOUNT[0]:
+                    if offer_sku != sku and counts[offer_sku] > 0:
+                        selection.append(offer_sku)
+
+                    if len(selection) > GROUP_DISCOUNT[1]:
+                        
+
+
 
             if not offer_applied:
                 counts[sku] -= 1
