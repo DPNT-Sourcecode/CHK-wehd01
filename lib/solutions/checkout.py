@@ -3,8 +3,8 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    recognised_skus = 'ABCD'
-    counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0}
+    recognised_skus = 'AEBCD'
+    counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0}
 
     for sku in skus:
         if sku in recognised_skus:
@@ -14,10 +14,13 @@ def checkout(skus):
 
     # Compute cost
     cost = 0
-    for sku in counts:
+    for sku in recognised_skus:
         while counts[sku] > 0:
             if sku == 'A':
-                if counts[sku] / 3 > 0:
+                if counts[sku] / 5 > 0:
+                    counts[sku] -= 5
+                    cost += 200
+                elif counts[sku] / 3 > 0:
                     counts[sku] -= 3
                     cost += 130
                 else:
@@ -36,4 +39,6 @@ def checkout(skus):
             elif sku == 'D':
                 counts[sku] -= 1
                 cost += 15
+            elif sku == 'E':
+                if counts['B'] >
     return cost
