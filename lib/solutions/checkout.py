@@ -37,6 +37,3 @@ def checkout(skus):
                 counts[sku] -= 1
                 cost += 15
     return cost
-
-
-
