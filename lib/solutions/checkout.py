@@ -70,5 +70,11 @@ def checkout(skus):
     for sku in recognised_skus:
         while counts[sku] > 0:
             if sku in offers_bogof:
+                offer = offers_bogof[sku]
+                second_sku = offer[2]
+                if counts[second_sku] > offer[1] and counts[sku] > offer[0]:
+                    counts[sku] -= offer[0]
+                    counts[second_sku] -= offer[1]
+
 
     return cost
