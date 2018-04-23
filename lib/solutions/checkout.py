@@ -1,5 +1,5 @@
-# Ordering of SKUs in string determines order of iteration in bewlow function
-RECOGNISED_SKUS = 'AEBCDFGHIJKLNMOPRQSTUVWXYZ'
+# Ordering of SKUs in below string determines order of iteration
+RECOGNISED_SKUS = 'STXYZAEBCDFGHIJKLNMOPRQUVW'
 
 PRICES = {
     'A': 50,
@@ -30,7 +30,14 @@ PRICES = {
     'Z': 21,
 }
 
+
+
 # Structures specifying offers
+
+GROUP_DISCOUNTS = [
+    ('STXYZ', 3, 45)
+]
+
 OFFERS_BULK = {
     'A': [(5, 200), (3, 130)],
     'B': [(2, 45)],
