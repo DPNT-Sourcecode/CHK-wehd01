@@ -74,7 +74,6 @@ def checkout(skus):
         while counts[sku] > 0:
             offer_applied = False
 
-            # TODO: refactor these branches into functions
             if sku in offers_mix:
                 offer = offers_mix[sku]
                 second_sku = offer[2]
@@ -89,6 +88,7 @@ def checkout(skus):
                 if counts[sku] / (offer[0] + offer[1]) > 0:
                     counts[sku] -= offer[0] + offer[1]
                     cost += offer[0] * prices[sku]
+                    offer_applied = True
             elif sku in offers_bulk:
                 for offer in offers_bulk[sku]:
                     if counts[sku] / offer[0] > 0:
