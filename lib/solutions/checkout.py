@@ -69,6 +69,8 @@ def checkout(skus):
     cost = 0
     for sku in recognised_skus:
         while counts[sku] > 0:
+            offer_applied = False
+
             # TODO: refactor these branches into functions
             if sku in offers_bogof:
                 offer = offers_bogof[sku]
@@ -77,13 +79,18 @@ def checkout(skus):
                     counts[sku] -= offer[0]
                     counts[second_sku] -= offer[1]
                     cost += prices['sku'] * offer[0]
-                else:
-                    counts[sku] -= 1
-                    cost += prices[sku]
+                    offer_applied = True
             #         NOTE: this elif logic relies on no SKU having offers of both types
             elif sku in offers_multi:
                 for offer in offers_multi[sku]:
-                    
+                    if counts[sku] / offer[0] > 0:
+                        counts[sku] -= offer[0]
+                        cost += offer[1]
+                        offer_applied = True
+                        break
 
+            if not offer_applied:
+                counts[sku] -= 1
+                cost += prices[sku]
 
     return cost
