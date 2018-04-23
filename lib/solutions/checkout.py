@@ -31,12 +31,9 @@ PRICES = {
 }
 
 
-
 # Structures specifying offers
 
-GROUP_DISCOUNTS = [
-    ('STXYZ', 3, 45)
-]
+GROUP_DISCOUNT = ('STXYZ', 3, 45)
 
 OFFERS_BULK = {
     'A': [(5, 200), (3, 130)],
@@ -58,6 +55,7 @@ OFFERS_MIX = {
     'N': (3, 1, 'M'),
     'R': (3, 1, 'Q'),
 }
+
 
 # noinspection PyUnusedLocal
 # skus = unicode string
@@ -101,6 +99,8 @@ def checkout(skus):
                         cost += offer[1]
                         offer_applied = True
                         break
+            elif sku in GROUP_DISCOUNT[0]:
+                
 
             if not offer_applied:
                 counts[sku] -= 1
