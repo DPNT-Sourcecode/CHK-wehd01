@@ -1,5 +1,5 @@
 # Ordering of SKUs in below string determines order of iteration
-RECOGNISED_SKUS = 'XYSTZAEBCDFGHIJKLNMOPRQUVW'
+RECOGNISED_SKUS = 'ZTSYXAEBCDFGHIJKLNMOPRQUVW'
 
 PRICES = {
     'A': 50,
@@ -33,7 +33,7 @@ PRICES = {
 
 # Structures specifying offers
 
-GROUP_DISCOUNT = ('XYSTZ', 3, 45)
+GROUP_DISCOUNT = ('ZTSYX', 3, 45)
 
 OFFERS_BULK = {
     'A': [(5, 200), (3, 130)],
