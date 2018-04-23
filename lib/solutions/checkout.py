@@ -6,6 +6,10 @@ def checkout(skus):
     # The below string determines the order of iteration over the different SKUs
     recognised_skus = 'AEBCDFGHIJKLNMOPQRSTUVWXYZ'
 
+    prices = {
+        'A': 50,
+    }
+
     # Structures specifying offers
     offers_multi = {
         'A': [(5, 200), (3, 130)],
