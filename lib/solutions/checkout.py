@@ -78,7 +78,7 @@ def checkout(skus):
             if sku in offers_mix:
                 offer = offers_mix[sku]
                 second_sku = offer[2]
-                if counts[second_sku] > offer[1] and counts[sku] > offer[0]:
+                if counts[second_sku] / offer[1] > 0 and counts[sku] / offer[0] > 0:
                     counts[sku] -= offer[0]
                     counts[second_sku] -= offer[1]
                     cost += prices['sku'] * offer[0]
