@@ -3,4 +3,7 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
-    raise NotImplementedError()
+    recognised_skus = 'ABCD'
+    counts = {}
+    for sku in skus:
+        if sku not in
