@@ -80,6 +80,10 @@ def checkout(skus):
                 else:
                     counts[sku] -= 1
                     cost += prices[sku]
+            #         NOTE: this elif logic relies on no SKU having offers of both types
+            elif sku in offers_multi:
+                for offer in offers_multi[sku]:
+                    
 
 
     return cost
