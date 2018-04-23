@@ -3,14 +3,20 @@
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
+    # The below string determines the order of iteration over the different SKUs
+    recognised_skus = 'AEBCDFGHIJKLNMOPQRSTUVWXYZ'
+
     # Structures specifying offers
     offers_multi = {
         'A': [(5, 200), (3, 130)],
         'B': [(2, 45)],
+        'H': [(10, 80), (5, 45)],
+        'K': [(2, 150)],
+        'P': [(5, 200)],
+        'Q': [(3, 80)],
+        'V': [(3, 130), (2, 90)]
     }
 
-    # The below string determines the order of iteration over the different SKUs
-    recognised_skus = 'AEBCDFGHIJKLNMOPQRSTUVWXYZ'
 
     counts = {}
     for sku in recognised_skus:
