@@ -29,7 +29,7 @@ def checkout(skus):
                     counts[sku] -= 1
                     cost += 50
             elif sku == 'B':
-                if counts[sku] / 2 > 0:
+                if counts['B'] / 2 > 0:
                     counts['B'] -= 2
                     cost += 45
                 else:
@@ -49,4 +49,11 @@ def checkout(skus):
                 else:
                     counts['E'] -= 1
                     cost += 40
+            elif sku == 'F':
+                if counts['F'] / 3 > 0:
+                    counts['F'] -= 3
+                    cost += 20
+                else:
+                    counts['F'] -= 1
+                    cost += 10
     return cost
