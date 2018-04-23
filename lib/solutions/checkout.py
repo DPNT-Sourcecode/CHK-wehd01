@@ -4,7 +4,7 @@
 # skus = unicode string
 def checkout(skus):
     # The below string determines the order of iteration over the different SKUs
-    recognised_skus = 'AEBCDFGHIJKLNMOPQRSTUVWXYZ'
+    recognised_skus = 'AEBCDFGHIJKLNMOPRQSTUVWXYZ'
 
     prices = {
         'A': 50,
