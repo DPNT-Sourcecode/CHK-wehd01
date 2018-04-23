@@ -36,7 +36,7 @@ def checkout(skus):
     }
 
     # Structures specifying offers
-    offers_multi = {
+    offers_bulk = {
         'A': [(5, 200), (3, 130)],
         'B': [(2, 45)],
         'H': [(10, 80), (5, 45)],
@@ -47,11 +47,14 @@ def checkout(skus):
     }
 
     offers_bogof = {
+        'F': (2, 1),
+        'U': (3, 1),
+    }
+
+    offers_mix = {
         'E': (2, 1, 'B'),
-        'F': (2, 1, 'F'),
         'N': (3, 1, 'M'),
         'R': (3, 1, 'Q'),
-        'U': (3, 1, 'U'),
     }
 
     counts = {}
@@ -72,8 +75,8 @@ def checkout(skus):
             offer_applied = False
 
             # TODO: refactor these branches into functions
-            if sku in offers_bogof:
-                offer = offers_bogof[sku]
+            if sku in offers_mix:
+                offer = offers_mix[sku]
                 second_sku = offer[2]
                 if counts[second_sku] > offer[1] and counts[sku] > offer[0]:
                     counts[sku] -= offer[0]
@@ -81,8 +84,8 @@ def checkout(skus):
                     cost += prices['sku'] * offer[0]
                     offer_applied = True
             #         NOTE: this elif logic relies on no SKU having offers of both types
-            elif sku in offers_multi:
-                for offer in offers_multi[sku]:
+            elif sku in offers_bulk:
+                for offer in offers_bulk[sku]:
                     if counts[sku] / offer[0] > 0:
                         counts[sku] -= offer[0]
                         cost += offer[1]
