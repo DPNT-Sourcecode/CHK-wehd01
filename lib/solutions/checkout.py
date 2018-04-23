@@ -69,12 +69,17 @@ def checkout(skus):
     cost = 0
     for sku in recognised_skus:
         while counts[sku] > 0:
+            # TODO: refactor these branches into functions
             if sku in offers_bogof:
                 offer = offers_bogof[sku]
                 second_sku = offer[2]
                 if counts[second_sku] > offer[1] and counts[sku] > offer[0]:
                     counts[sku] -= offer[0]
                     counts[second_sku] -= offer[1]
+                    cost += prices['sku'] * offer[0]
+                else:
+                    counts[sku] -= 1
+                    cost += prices[sku]
 
 
     return cost
