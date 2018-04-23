@@ -80,7 +80,7 @@ def checkout(skus):
                 if counts[second_sku] / offer[1] > 0 and counts[sku] / offer[0] > 0:
                     counts[sku] -= offer[0]
                     counts[second_sku] -= offer[1]
-                    cost += prices['sku'] * offer[0]
+                    cost += prices[sku] * offer[0]
                     offer_applied = True
             #         NOTE: this elif logic relies on no SKU having offers of both types
             elif sku in offers_bogof:
