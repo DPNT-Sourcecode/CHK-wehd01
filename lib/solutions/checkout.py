@@ -84,6 +84,11 @@ def checkout(skus):
                     cost += prices['sku'] * offer[0]
                     offer_applied = True
             #         NOTE: this elif logic relies on no SKU having offers of both types
+            elif sku in offers_bogof:
+                offer = offers_bogof[sku]
+                if counts[sku] / (offer[0] + offer[1]) > 0:
+                    counts[sku] -= offer[0] + offer[1]
+                    cost += offer[0] * prices[sku]
             elif sku in offers_bulk:
                 for offer in offers_bulk[sku]:
                     if counts[sku] / offer[0] > 0:
