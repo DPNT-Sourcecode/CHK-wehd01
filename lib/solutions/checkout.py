@@ -5,7 +5,10 @@
 def checkout(skus):
     # The below string determines the order of iteration over the different SKUs
     recognised_skus = 'AEBCDF'
-    counts = {'A': 0, 'B': 0, 'C': 0, 'D': 0, 'E': 0, 'F': 0}
+
+    counts = {}
+    for sku in recognised_skus:
+        counts[sku] = 0
 
     # Count the occurrences of each SKU
     for sku in skus:
