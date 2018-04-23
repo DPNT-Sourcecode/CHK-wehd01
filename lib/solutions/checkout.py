@@ -80,18 +80,21 @@ def checkout(skus):
             if sku in OFFERS_MIX:
                 offer = OFFERS_MIX[sku]
                 second_sku = offer[2]
+
                 if counts[second_sku] / offer[1] > 0 and counts[sku] / offer[0] > 0:
                     counts[sku] -= offer[0]
                     counts[second_sku] -= offer[1]
                     cost += PRICES[sku] * offer[0]
                     offer_applied = True
-            # NOTE: this elif logic relies on no SKU having offers of both types
+
             elif sku in OFFERS_BOGOF:
                 offer = OFFERS_BOGOF[sku]
+
                 if counts[sku] / (offer[0] + offer[1]) > 0:
                     counts[sku] -= offer[0] + offer[1]
                     cost += offer[0] * PRICES[sku]
                     offer_applied = True
+
             elif sku in OFFERS_BULK:
                 for offer in OFFERS_BULK[sku]:
                     if counts[sku] / offer[0] > 0:
@@ -99,15 +102,18 @@ def checkout(skus):
                         cost += offer[1]
                         offer_applied = True
                         break
+
             elif sku in GROUP_DISCOUNT[0]:
                 selection = [sku]
                 for offer_sku in GROUP_DISCOUNT[0]:
+
                     if offer_sku != sku and counts[offer_sku] > 0:
                         selection.append(offer_sku)
                     if len(selection) >= GROUP_DISCOUNT[1]:
                         for i in range(GROUP_DISCOUNT[1]):
                             counts[selection[i]] -= 1
-                            
+                        cost += GROUP_DISCOUNT[2]
+                        offer_applied = True
 
             if not offer_applied:
                 counts[sku] -= 1
