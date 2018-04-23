@@ -104,7 +104,8 @@ def checkout(skus):
                         break
 
             elif sku in GROUP_DISCOUNT[0]:
-                selection = [sku * counts[sku]][0]
+                # Encapsulating string in list and indexing necessary to get list of strings
+                selection = [[sku] * counts[sku]][0]
                 for offer_sku in GROUP_DISCOUNT[0]:
                     available_item_count = counts[offer_sku]
                     while offer_sku != sku and available_item_count > 0:
